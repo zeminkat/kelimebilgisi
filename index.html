@@ -1,0 +1,256 @@
+<!doctype html>
+<html lang="tr">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Kelime Yarışmaları</title>
+  <style>
+    :root{
+      --bg1:#0ea5e9;     /* sky */
+      --bg2:#a855f7;     /* purple */
+      --card:#ffffff;
+      --text:#0b1220;
+      --muted:#55627a;
+      --ring: rgba(14,165,233,.25);
+      --shadow: 0 18px 45px rgba(2,6,23,.18);
+      --radius: 18px;
+    }
+
+    *{ box-sizing:border-box; }
+
+    body{
+      margin:0;
+      min-height:100vh;
+      font-family: system-ui,-apple-system,Segoe UI,Roboto,Arial,"Noto Sans",sans-serif;
+      color:var(--text);
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      padding:24px;
+      background:
+        radial-gradient(1200px 600px at 15% 10%, rgba(255,255,255,.22), transparent 55%),
+        radial-gradient(900px 500px at 90% 85%, rgba(255,255,255,.16), transparent 55%),
+        linear-gradient(135deg, var(--bg1), var(--bg2));
+    }
+
+    .wrap{
+      width:min(920px, 100%);
+      display:grid;
+      gap:16px;
+    }
+
+    .card{
+      background:rgba(255,255,255,.92);
+      border:1px solid rgba(255,255,255,.35);
+      border-radius:var(--radius);
+      box-shadow:var(--shadow);
+      padding:26px 22px;
+      backdrop-filter: blur(8px);
+    }
+
+    header{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap:14px;
+      margin-bottom:14px;
+    }
+
+    .brand{
+      display:flex;
+      align-items:center;
+      gap:12px;
+    }
+
+    .logo{
+      width:44px;
+      height:44px;
+      border-radius:14px;
+      display:grid;
+      place-items:center;
+      font-size:22px;
+      background:linear-gradient(135deg, rgba(14,165,233,.95), rgba(168,85,247,.95));
+      color:#fff;
+      box-shadow:0 10px 18px rgba(2,6,23,.15);
+      user-select:none;
+    }
+
+    h1{
+      margin:0;
+      font-size:clamp(24px, 3.4vw, 34px);
+      letter-spacing:-.02em;
+      line-height:1.15;
+    }
+
+    .subtitle{
+      margin:6px 0 0;
+      color:var(--muted);
+      font-size:14px;
+      line-height:1.4;
+    }
+
+    .chips{
+      display:flex;
+      flex-wrap:wrap;
+      gap:8px;
+      justify-content:flex-end;
+      align-items:center;
+      margin-top:2px;
+    }
+
+    .chip{
+      font-size:12px;
+      color:rgba(11,18,32,.85);
+      background:rgba(255,255,255,.75);
+      border:1px solid rgba(11,18,32,.08);
+      padding:6px 10px;
+      border-radius:999px;
+      box-shadow:0 6px 12px rgba(2,6,23,.06);
+      user-select:none;
+      white-space:nowrap;
+    }
+
+    .grid{
+      display:grid;
+      grid-template-columns: 1fr;
+      gap:12px;
+      margin-top:14px;
+    }
+    @media (min-width: 720px){
+      .grid{ grid-template-columns: 1fr 1fr; }
+    }
+
+    a.btn{
+      text-decoration:none;
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      gap:12px;
+      padding:16px 16px;
+      border-radius:16px;
+      border:1px solid rgba(11,18,32,.08);
+      background: var(--card);
+      color:var(--text);
+      box-shadow: 0 10px 20px rgba(2,6,23,.08);
+      transition: transform .10s ease, box-shadow .12s ease, border-color .12s ease;
+      min-height:72px;
+      outline:none;
+    }
+
+    a.btn:focus-visible{
+      box-shadow: 0 0 0 6px var(--ring), 0 10px 20px rgba(2,6,23,.10);
+      border-color: rgba(14,165,233,.35);
+    }
+
+    a.btn:hover{
+      transform: translateY(-2px);
+      box-shadow: 0 18px 30px rgba(2,6,23,.12);
+      border-color: rgba(11,18,32,.14);
+    }
+
+    .btn-left{
+      display:flex;
+      align-items:center;
+      gap:12px;
+      min-width:0;
+    }
+
+    .badge{
+      width:44px;
+      height:44px;
+      border-radius:14px;
+      display:grid;
+      place-items:center;
+      font-size:22px;
+      user-select:none;
+    }
+
+    .badge.zit{
+      background: linear-gradient(135deg, rgba(14,165,233,.20), rgba(14,165,233,.04));
+      border:1px solid rgba(14,165,233,.22);
+    }
+
+    .badge.es{
+      background: linear-gradient(135deg, rgba(168,85,247,.20), rgba(168,85,247,.04));
+      border:1px solid rgba(168,85,247,.22);
+    }
+
+    .btn-title{
+      font-weight:800;
+      letter-spacing:-.01em;
+      line-height:1.15;
+      margin:0;
+      font-size:16px;
+      white-space:normal;
+    }
+
+    .btn-desc{
+      margin:4px 0 0;
+      color:var(--muted);
+      font-size:13px;
+      line-height:1.35;
+    }
+
+    .arrow{
+      font-size:18px;
+      opacity:.7;
+      flex: 0 0 auto;
+      user-select:none;
+    }
+
+    .note{
+      margin-top:12px;
+      color:rgba(11,18,32,.70);
+      font-size:12px;
+      text-align:center;
+    }
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <main class="card" role="main" aria-label="Kelime Yarışmaları Ana Menü">
+      <header>
+        <div class="brand">
+          <div class="logo" aria-hidden="true">⭐</div>
+          <div>
+            <h1>Kelime Yarışmaları</h1>
+            <p class="subtitle">Yarışını seç, adını yaz ve 60 saniyede en yüksek puanı yakala!</p>
+          </div>
+        </div>
+        <div class="chips" aria-label="Özellikler">
+          <span class="chip">👤 Tek Kişi</span>
+          <span class="chip">👥 İki Kişi</span>
+          <span class="chip">⏱️ 60 sn</span>
+          <span class="chip">🏆 Rekorlar</span>
+        </div>
+      </header>
+
+      <section class="grid" aria-label="Yarış seçimi">
+        <a class="btn" href="./yaris1.html" aria-label="Zıt Anlamlı Kelimeler Yarışı">
+          <div class="btn-left">
+            <div class="badge zit" aria-hidden="true">↔️</div>
+            <div>
+              <p class="btn-title">Zıt Anlamlı Kelimeler Yarışı</p>
+              <p class="btn-desc">Karşıt anlamı bul, hızlı puan topla.</p>
+            </div>
+          </div>
+          <div class="arrow" aria-hidden="true">→</div>
+        </a>
+
+        <a class="btn" href="./yaris2.html" aria-label="Eş Anlamlı Kelimeler Yarışı">
+          <div class="btn-left">
+            <div class="badge es" aria-hidden="true">🟰</div>
+            <div>
+              <p class="btn-title">Eş Anlamlı Kelimeler Yarışı</p>
+              <p class="btn-desc">Anlamdaş kelimeyi seç, rekorunu kır.</p>
+            </div>
+          </div>
+          <div class="arrow" aria-hidden="true">→</div>
+        </a>
+      </section>
+
+      <div class="note"></div>
+    </main>
+  </div>
+</body>
+</html>
